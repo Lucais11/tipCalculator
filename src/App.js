@@ -4,7 +4,7 @@ import Card from "./components/Card";
 
 const App = () => {
   return (
-    <Box height="100vh">
+    <Box height="100vh" bgGradient="linear(to-r, green.200, pink.500)">
       <Center height="100%">
         <Card />
       </Center>
