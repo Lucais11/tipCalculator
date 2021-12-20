@@ -1,5 +1,11 @@
 import React from "react";
-import { InputGroup, InputLeftElement, Input, Box } from "@chakra-ui/react";
+import {
+  InputGroup,
+  InputLeftElement,
+  Input,
+  Box,
+  Button,
+} from "@chakra-ui/react";
 
 const NumberInput = ({ Icon }) => {
   return (

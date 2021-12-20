@@ -6,7 +6,7 @@ import Total from "./Total";
 const Card = () => {
   return (
     <Box
-      width="75vw"
+      width="60vw"
       height="55vh"
       bg="white"
       rounded="2xl"
