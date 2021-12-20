@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   InputGroup,
   InputLeftElement,
@@ -7,7 +7,12 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-const NumberInput = ({ Icon }) => {
+const NumberInput = ({ Icon, onChange, initial }) => {
+  const [state, setState] = useState(initial || 0);
+  const handleChange = (e) => {
+    setState(e.target.value);
+    onChange(e.target.value);
+  };
   return (
     <InputGroup bg="gray.100">
       <InputLeftElement
@@ -18,7 +23,7 @@ const NumberInput = ({ Icon }) => {
           </Box>
         }
       />
-      <Input type="number" />
+      <Input type="number" value={state} onChange={handleChange} />
     </InputGroup>
   );
 };

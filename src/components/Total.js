@@ -2,8 +2,14 @@ import React from "react";
 import { Box, Flex, Text, Spacer } from "@chakra-ui/react";
 import BigNumber from "./BigNumber";
 import WideButton from "./WideButton";
+import { useStoreState, useStoreActions } from "easy-peasy";
+import { calcTipPerPerson, calcTotalPerPerson } from "../lib/calculator";
 
 const Total = () => {
+  const { bill, tip, people, hasBeenUsed } = useStoreState((state) => state);
+
+  const reset = useStoreActions((actions) => actions.reset);
+
   return (
     <Box bg="teal.700" height="100%" padding="8" rounded="2xl">
       <Flex direction="column" height="100%">
@@ -18,7 +24,7 @@ const Total = () => {
               </Text>
             </Box>
             <Box>
-              <BigNumber />
+              <BigNumber number={calcTipPerPerson(bill, tip, people)} />
             </Box>
           </Flex>
         </Box>
@@ -33,13 +39,13 @@ const Total = () => {
               </Text>
             </Box>
             <Box>
-              <BigNumber />
+              <BigNumber number={calcTotalPerPerson(bill, tip, people)} />
             </Box>
           </Flex>
         </Box>
         <Spacer />
         <Flex height="50%" align="end">
-          <WideButton disabled />
+          <WideButton disabled={!hasBeenUsed} onClick={reset} />
         </Flex>
       </Flex>
     </Box>
